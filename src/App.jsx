@@ -17,7 +17,7 @@ import NotFound from './sections/NotFound.jsx';
 function App() {
   return (
     <HelmetProvider>
-      <Router>
+      <Router basename="/goltrand-boukoumou.github.io">
         <Navbar />
         <MobileCTA />
         <Analytics />
