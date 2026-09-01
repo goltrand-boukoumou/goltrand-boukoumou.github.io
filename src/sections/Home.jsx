@@ -2,16 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { projects, skills, testimonials, faqData, teamMembers } from '../data/portfolioData';
 import SEO from '../components/SEO.jsx';
+import { useLanguage } from '../context/LanguageContext';
+import translations from '../data/translations.json';
 
 export default function Home() {
   return (
     <>
-      <SEO title="Accueil | Goltrand Boukoumou" description="Portfolio de Goltrand Boukoumou – développeur full‑stack et designer UI/UX. Découvrez ses projets, compétences et contactez‑le." ogImage="/og-image.jpg" />
+      <SEO title={`${t.welcome} | Goltrand Boukoumou`} description={t.description} ogImage="/og-image.jpg" />
     <div>
       {/* 7. Fil d'Ariane */}
       <div className="container" style={{ padding: 'var(--spacing-md) var(--spacing-lg)' }}>
         <nav aria-label="Fil d'Ariane" style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-gray)' }}>
-          <Link to="/">Accueil</Link>
+          <Link to="/" style={{ color: 'var(--color-text)' }}>{t.nav_home}</Link>
         </nav>
       </div>
 
@@ -19,15 +21,15 @@ export default function Home() {
       <section className="section" style={{ textAlign: 'center', paddingBottom: 'var(--spacing-xl)' }}>
         <div className="container">
           <h1 style={{ maxWidth: '800px', margin: '0 auto var(--spacing-md) auto' }}>
-            Conception & Développement d'Expériences Web Immersives
+            {t.welcome}
           </h1>
           <p style={{ maxWidth: '600px', margin: '0 auto var(--spacing-xl) auto', color: 'var(--color-gray)', fontSize: 'var(--font-size-lg)' }}>
-            Je suis Goltrand Boukoumou, développeur JavaScript et designer UI/UX. Je transforme vos idées en applications web modernes, performantes et centrées sur l'utilisateur.
+            {t.description}
           </p>
           {/* 13. CTA sans scroll */}
           <div style={{ display: 'flex', gap: 'var(--spacing-md)', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link to="/contact" className="btn btn-primary">Démarrer un projet</Link>
-            <Link to="/projets" className="btn btn-secondary">Explorer mes travaux</Link>
+            <Link to="/contact" className="btn btn-primary">{t.cta_start}</Link>
+            <Link to="/projets" className="btn btn-secondary">{t.cta_explore}</Link>
           </div>
         </div>
       </section>
