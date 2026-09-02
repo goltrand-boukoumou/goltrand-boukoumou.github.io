@@ -31,6 +31,7 @@ function App() {
               <Route path="/projets/:id" element={<ProjectDetail />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/merci" element={<ThankYou />} />
+              <Route path="/carte" element={<Map />} />
               <Route path="/politique-confidentialite" element={<PrivacyPolicy />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

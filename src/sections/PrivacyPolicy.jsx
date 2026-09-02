@@ -1,57 +1,64 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO.jsx';
+import { useLanguage } from '../context/LanguageContext';
+import translations from '../data/translations.json';
 
 export default function PrivacyPolicy() {
+  const { language } = useLanguage();
+  const t = translations[language];
+  const localeMap = { fr: 'fr-FR', en: 'en-US', es: 'es-ES', zh: 'zh-CN' };
+  const formattedDate = new Date().toLocaleDateString(localeMap[language] || 'fr-FR');
+
   return (
     <>
-      <SEO title="Politique de confidentialité | Goltrand Boukoumou" description="Politique de confidentialité (RGPD) pour le portfolio de Goltrand Boukoumou." />
+      <SEO title={`${t.privacy_title} | Goltrand Boukoumou`} description={t.privacy_title} />
       <div className="container section">
         <div style={{ padding: 'var(--spacing-md) var(--spacing-lg)' }}>
-          <nav aria-label="Fil d'Ariane" style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-gray)', marginBottom: 'var(--spacing-lg)' }}>
-            <Link to="/">Accueil</Link> {'>'} <span>Politique de confidentialité</span>
+          <nav aria-label={t.breadcrumb_aria_label} style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-gray)', marginBottom: 'var(--spacing-lg)' }}>
+            <Link to="/">{t.nav_home}</Link> {'>'} <span>{t.nav_privacy}</span>
           </nav>
         </div>
 
         <div className="container" style={{ maxWidth: '800px', background: 'var(--color-white)', padding: 'var(--spacing-xl)', borderRadius: 'var(--border-radius-lg)', boxShadow: 'var(--shadow-md)' }}>
-          <h1>Politique de confidentialité (RGPD)</h1>
+          <h1>{t.privacy_title}</h1>
           <p style={{ color: 'var(--color-gray)', fontStyle: 'italic' }}>
-            Dernière mise à jour : {new Date().toLocaleDateString('fr-FR')}
+            {t.privacy_last_updated} {formattedDate}
           </p>
 
-          <h2>1. Données collectées</h2>
+          <h2>{t.privacy_section_1}</h2>
           <p style={{ color: 'var(--color-gray)', marginBottom: 'var(--spacing-md)' }}>
-            Lorsque vous utilisez le formulaire de contact, je collecte votre nom, adresse email, sujet et message. Ces informations sont utilisées uniquement pour répondre à votre demande.
+            {t.privacy_data_collected}
           </p>
 
-          <h2>2. Finalités</h2>
+          <h2>{t.privacy_section_2}</h2>
           <p style={{ color: 'var(--color-gray)', marginBottom: 'var(--spacing-md)' }}>
-            Les données sont utilisées pour : vous recontacter, comprendre votre besoin, et proposer un devis ou une collaboration.
+            {t.privacy_purpose}
           </p>
 
-          <h2>3. Durée de conservation</h2>
+          <h2>{t.privacy_section_3}</h2>
           <p style={{ color: 'var(--color-gray)', marginBottom: 'var(--spacing-md)' }}>
-            Vos données sont conservées pendant une durée maximale de 3 ans après le dernier contact.
+            {t.privacy_retention}
           </p>
 
-          <h2>4. Vos droits (RGPD)</h2>
+          <h2>{t.privacy_section_4}</h2>
           <p style={{ color: 'var(--color-gray)', marginBottom: 'var(--spacing-md)' }}>
-            Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, d'effacement, de portabilité et d'opposition concernant vos données. Pour exercer ces droits, contactez-moi à : <a href="mailto:contact@goltrand-boukoumou.io">contact@goltrand-boukoumou.io</a>.
+            {t.privacy_rights} <a href="mailto:contact@goltrand-boukoumou.io">contact@goltrand-boukoumou.io</a>.
           </p>
 
-          <h2>5. Cookies</h2>
+          <h2>{t.privacy_section_5}</h2>
           <p style={{ color: 'var(--color-gray)', marginBottom: 'var(--spacing-md)' }}>
-            Ce site utilise uniquement des cookies techniques nécessaires à son bon fonctionnement. Aucun cookie de tracking publicitaire n'est déposé.
+            {t.privacy_cookies}
           </p>
 
-          <h2>6. Hébergement & Sécurité</h2>
+          <h2>{t.privacy_section_6}</h2>
           <p style={{ color: 'var(--color-gray)', marginBottom: 'var(--spacing-md)' }}>
-            Le site est hébergé sur une infrastructure sécurisée (Vercel/Netlify). Les communications sont chiffrées via HTTPS.
+            {t.privacy_hosting}
           </p>
 
-          <h2>7. Contact DPO</h2>
+          <h2>{t.privacy_section_7}</h2>
           <p style={{ color: 'var(--color-gray)', marginBottom: 'var(--spacing-md)' }}>
-            Pour toute question relative à la protection de vos données : <a href="mailto:contact@goltrand-boukoumou.io">contact@goltrand-boukoumou.io</a>.
+            {t.privacy_contact_dpo} <a href="mailto:contact@goltrand-boukoumou.io">contact@goltrand-boukoumou.io</a>.
           </p>
         </div>
       </div>

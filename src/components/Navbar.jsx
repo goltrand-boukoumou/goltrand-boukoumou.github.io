@@ -20,7 +20,7 @@ export default function Navbar() {
           </Link>
 
           {/* Navigation + Sélecteurs */}
-          <nav aria-label="Navigation principale" style={{ display: 'flex', gap: 'var(--spacing-lg)', alignItems: 'center' }}>
+          <nav aria-label={t.main_nav_aria_label} style={{ display: 'flex', gap: 'var(--spacing-lg)', alignItems: 'center' }}>
             <Link to="/" style={{ color: 'var(--color-text)' }}>{t.nav_home}</Link>
             <Link to="/projets" style={{ color: 'var(--color-text)' }}>{t.nav_projects}</Link>
             <Link to="/contact" className="btn btn-primary" style={{ padding: '0.5rem 1rem' }}>{t.nav_contact}</Link>
@@ -28,7 +28,7 @@ export default function Navbar() {
             {/* Theme toggle */}
             <button
               onClick={toggleTheme}
-              aria-label="Changer le thème"
+              aria-label={t.theme_toggle_aria}
               style={{
                 background: 'transparent',
                 border: 'none',
@@ -51,7 +51,7 @@ export default function Navbar() {
                 borderRadius: 'var(--border-radius-sm)',
                 padding: '0.25rem 0.5rem'
               }}
-              aria-label="Sélectionner la langue"
+              aria-label={t.language_select_aria}
             >
               <option value="fr">{t.lang_fr}</option>
               <option value="en">{t.lang_en}</option>
